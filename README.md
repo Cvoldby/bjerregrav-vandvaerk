@@ -8,7 +8,7 @@ Projektet handler om Øster Bjerregrav Vandværk, der gerne vil have spare penge
 Det vil de gerne opnå ved kun at starte pumperne, når strømmen er billig.
 
 
-*Include Table of contents*
+[TOC]
 
 
 # Prototype
