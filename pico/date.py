@@ -22,8 +22,9 @@ def get_date_today():
             (year, month, day, hours, minutes, seconds, weekday, yearday) = time.localtime(sec)
             
             today = f"{year}/{month:02}-{day:02}" 
+            current_time = [hours, minutes]
 
-            return today
+            return today, current_time
         except OSError as e:
             time.sleep(5)
             continue

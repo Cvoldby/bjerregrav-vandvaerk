@@ -6,7 +6,7 @@ import ntptime
 import urequests
 
 from network_connect import connect_to_network
-#from date import get_date_today
+from date import get_date_today as gdt
 
 from conf import TARIF_PRISER
 
@@ -16,6 +16,7 @@ password = "2nd_Semester_F24v"
 
 connect_to_network(ssid, password)
 
+""" 
 def get_date_today():
     
     while True:
@@ -34,10 +35,11 @@ def get_date_today():
             time.sleep(5)
             continue
 
-
+ """
 
 def get_elpriser_API():
-    today = get_date_today()
+    today, c_time = gdt()
+    print(today)
 
     request_addr = "https://www.elprisenligenu.dk/api/v1/prices/" + today + "_DK1.json"
     #print(request_addr)
@@ -86,3 +88,5 @@ if __name__ == "__main__":
     test = get_elpriser_API_tarif()
     #print(test)
     print(str(test))
+
+    print(gdt())

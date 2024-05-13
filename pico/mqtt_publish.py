@@ -31,10 +31,13 @@ def connect_client(client_id='vand_broker', server='10.120.0.87', port=5000):
 
 list_prices = get_elpriser_API_tarif()
 
-def send_elpriser():
+def publish_elpriser():
     client = connect_client()
     prices = get_elpriser_API_tarif()
-    client.publish('elpriser/', str(prices))
+    client.publish('elpriser/', str(prices)) # publish as list
+
+    for idx, price in enumerate(prices):
+        client.publish('elpriser/', str(price))
 
 
 def publish_liquid_level():
@@ -42,5 +45,5 @@ def publish_liquid_level():
 
     level = liquid_level()
 
-    client.publish('water/', str(level))
+    client.publish('water/level', str(level))
 

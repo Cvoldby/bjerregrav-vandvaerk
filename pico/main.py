@@ -1,12 +1,15 @@
 """
 This is the main file for the micro controller
 """
-
+from time import sleep
 
 from umqtt.simple import MQTTClient
 
 from network_connect import connect_to_network
 from get_prices import get_elpriser_API_tarif
+from date import get_date_today
+from mqtt_publish import *
+from sensor import *
 
 # Connect to network - standard ITEK 2nd
 ssid = "ITEK 2nd" 
@@ -22,9 +25,23 @@ client = MQTTClient(
     #password=b''
 )
 
-client.connect()
+#client.connect()
 
-list_prices = get_elpriser_API_tarif()
 
-for price in list_prices:
-    client.publish('elpriser/', str(price))
+while True:
+    current_day, current_time = get_date_today()
+
+    publish_liquid_level()
+
+    if current_time[0] == 13 and current_time[1] > 15:
+        prices = get_elpriser_API_tarif()
+
+        publish_elpriser()
+
+        # calculate cheapest pump plan according to needs
+        hour_need_to_pump = 10
+
+    
+    sleep(10)
+    
+
