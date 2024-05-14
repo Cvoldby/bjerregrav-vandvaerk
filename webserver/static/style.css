@@ -1,0 +1,87 @@
+body {
+    font-family: Arial, sans-serif;
+	background-color: #6000;
+	margin: 0;
+	padding: 0;
+}
+
+.content-container {
+	flex: 1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.content {
+	text-align: center;
+}
+
+.water-container {
+    width: 200px;
+    height: 300px;
+    border: 2px solid #000;
+    position: relative;
+}
+
+.liquid {
+    background-color: #3498db;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    transition: height 0.2s ease;
+}
+
+.level {
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 10px;
+    background-color: #f1c40f;
+    border-radius: 5px;
+}
+
+.input-container {
+    margin-top: 10px;
+}
+
+.top-bar {
+        background-color: #333; /* Background color */
+        color: #fff; /* Text color */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 20px;
+}
+.logo {
+    width: 100px; /* Adjust the size of the logo as needed */
+}
+.login-button {
+    background-color: #f1c40f; /* Button background color */
+    color: #333; /* Button text color */
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.login-button:hover {
+    background-color: #ffd700; /* Hover background color */
+}
+
+.button {
+    background-color: #ce1b0e;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 16px 40px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+.button1 {
+    background-color: #000000;
+}

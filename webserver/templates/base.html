@@ -1,66 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Liquid Level Display</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        text-align: center;
-    }
-    .container {
-        margin-top: 50px;
-        width: 200px;
-        height: 300px;
-        border: 2px solid #000;
-        position: relative;
-    }
-    .liquid {
-        background-color: #3498db;
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        transition: height 0.5s ease;
-    }
-    .level {
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 50px;
-        height: 20px;
-        background-color: #f1c40f;
-        border-radius: 5px;
-    }
-    .input-container {
-        margin-top: 20px;
-        display: inline-block;
-    }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Øster Bjerregrav Vandværk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">    
 </head>
 <body>
-    <div class="container">
-        <div class="liquid" id="liquid"></div>
-        <div class="level"></div>
+	<div class="top-bar">
+		
+		<p> Øster Bjerregrav Vandværk </p>
+        <button class="login-button">Login</button>
     </div>
-    <div class="input-container">
-        <input type="range" min="0" max="100" value="50" id="levelRange" oninput="updateLevel()">
-    </div>
-    <br>
-    <span id="levelValue">50%</span>
-    
-    <script>
-        function updateLevel() {
-            var range = document.getElementById("levelRange");
-            var value = range.value;
-            var liquid = document.getElementById("liquid");
-            var level = document.querySelector(".level");
+	<div>
+		Velkommen til Øster Bjerregrav Vandværk prototype
+	</div>
+	<br>
+	<div class="content-container">
+		<div class="content">
+			<div class="water-container">
+				<div class="liquid" id="liquid" style="height: {{ liquid_level }}%"></div>
+				<div class="level"></div>
+			</div>
+			<div class="input-container">
+				<input type="range" min="0" max="100" value="0" id="levelRange" oninput="updateLevel()">
+			</div>
+			<br>
+			<span id="levelValue">0%</span>
+		
+			<script>
+				function updateLevel(level) {
+					var liquid = document.getElementById("liquid");
+					var levelIndicator = document.querySelector(".level");
 
-            liquid.style.height = value + "%";
-            level.style.bottom = value + "%";
-            document.getElementById("levelValue").innerText = value + "%";
-        }
-    </script>
+					liquid.style.height = level + "%";
+					levelIndicator.style.bottom = level + "%";
+				}
+
+				// Fetch data from server
+				setInterval(function() {
+					fetch('/api/liquid-level')
+						.then(response => response.json())
+						.then(data => {
+							updateLevel(data.level);
+						})
+						.catch(error => {
+							console.error('Error fetching data:', error);
+						});
+				}, 1000); // Update every second
+			</script>
+		</div>
+	</div>
 </body>
 </html>

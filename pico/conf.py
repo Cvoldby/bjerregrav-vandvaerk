@@ -19,7 +19,7 @@ TARIF_PRISER = {
     'Spidslast': 53.68
 }
 
-Kritisk_vandniveau = 1 # liter
+Kritisk_vandniveau = 100 # liter
 
 minimumsboringstid = 2 # timer
 
@@ -28,5 +28,25 @@ minimumsboringstid = 2 # timer
 SSID = 'ITEK 2nd'
 PASSWORD = '2nd_Semester_F24v'
 
+""" 
+# Connect to mqtt client - Kenneth 10.120.0.87
+client = MQTTClient(
+    client_id=b'vand_broker',
+    server=b'10.120.0.87',
+    port=5000,
+    keepalive=7200,
+    #user=b'',
+    #password=b''
+)
 
 
+# Connect to mqtt client - Anders - 10.100.0.97
+client = MQTTClient(
+    client_id=b'chvoclient',
+    server=b'10.100.0.96',
+    port=0,
+    keepalive=7200,
+    #user=b'',
+    #password=b''
+)
+ """
