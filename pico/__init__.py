@@ -14,8 +14,3 @@ TARIF_PRISER = {
 KRITISK_NIVEAU = 100 # liter
 
 MINIMUMSBORINGSTID = 2 # timer
-
-
-# school network name and password
-SSID = 'ITEK 2nd'
-PASSWORD = '2nd_Semester_F24v'

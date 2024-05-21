@@ -28,6 +28,8 @@ minimumsboringstid = 2 # timer
 SSID = 'ITEK 2nd'
 PASSWORD = '2nd_Semester_F24v'
 
+
+
 """ 
 # Connect to mqtt client - Kenneth 10.120.0.87
 client = MQTTClient(
@@ -50,3 +52,6 @@ client = MQTTClient(
     #password=b''
 )
  """
+
+
+
