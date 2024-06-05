@@ -10,7 +10,3 @@ TARIF_PRISER = {
     'Højlast': 20.65,
     'Spidslast': 53.68
 }
-
-KRITISK_NIVEAU = 100 # liter
-
-MINIMUMSBORINGSTID = 2 # timer

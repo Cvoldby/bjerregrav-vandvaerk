@@ -7,8 +7,14 @@ import urequests
 from network_connect import connect_to_network
 from date import get_date_today as gdt
 
-from conf import TARIF_PRISER
-
+from conf import *
+""" 
+TARIF_PRISER = {
+    'Lavlast': 13.76,
+    'Højlast': 20.65,
+    'Spidslast': 53.68
+}
+ """
 def get_elpriser_API():
     today, c_time = gdt()
     print(today)
@@ -50,7 +56,7 @@ def get_elpriser_API_tarif():
 
     return prices_tarif
     
-def get_elpriser_API_date(date="2024/01-01"):
+def get_elpriser_API_date(date):
     request_addr = "https://www.elprisenligenu.dk/api/v1/prices/" + date + "_DK1.json"
     #print(request_addr)
 
@@ -64,7 +70,7 @@ def get_elpriser_API_date(date="2024/01-01"):
     # tillæg moms?
     return elpriser
 
-def get_elpriser_API_tarif_tomorrow(date="2024/01-01"):
+def get_elpriser_API_tarif_tomorrow(date):
 
     prices = get_elpriser_API_date(date)
     prices_tarif = []

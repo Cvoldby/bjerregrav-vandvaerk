@@ -12,22 +12,15 @@ Tarifmodel
 21:00-24:00 - højlast
 
 """
-
 TARIF_PRISER = {
     'Lavlast': 13.76,
     'Højlast': 20.65,
     'Spidslast': 53.68
 }
 
-Kritisk_vandniveau = 100 # liter
-
-minimumsboringstid = 2 # timer
-
-
 # school network name and password
 SSID = 'ITEK 2nd'
 PASSWORD = '2nd_Semester_F24v'
-
 
 
 """ 
@@ -51,7 +44,15 @@ client = MQTTClient(
     #user=b'',
     #password=b''
 )
+
+# Connect to mqtt client - Kenneth google 35.210.127.92
+client = MQTTClient(
+    client_id=b'vand_broker',
+    server=b'35.210.127.92',
+    port=5000,
+    keepalive=7200,
+    #user=b'',
+    #password=b''
+)
  """
-
-
 
