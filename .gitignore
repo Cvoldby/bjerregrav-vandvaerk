@@ -3,3 +3,11 @@
 *.pyc
 __pycache__/
 janus_pico/
+*.png
+*.pdf
+*.docx
+
+dist/
+venv/
+
+pictures/

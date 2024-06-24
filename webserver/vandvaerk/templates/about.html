@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Welcome{% endblock %} - Øster Bjerregrav Vandværk</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='static/style.css') }}">    
+</head>
+<body>
+	<div class="top-bar">
+		<a href="{{ url_for('mainpage') }}" style="color: white; text-decoration:none;"> Øster Bjerregrav Vandværk </a>
+		<a class="top-button" href="{{ url_for('today') }}">Today</a>
+        <a class="top-button" href="{{ url_for('tomorrow') }}">Tomorrow</a>
+        <a class="top-button" href="{{ url_for('login') }}">Login</a>
+    </div>
+	<div class="content-container">
+		<div class="content">
+			{% block content %}
+				<h1> Velkommen </h1>
+				<p class="textbox">
+					På denne hjemmeside kan du følge med i VLV - Vores Lokale Vandværk.
+				</p>
+			{% endblock %}
+		</div>
+		<div class="content">
+			<div class="water-container">
+				<p>Current water level</p>
+				<div class="liquid" id="liquid" style="height: {{ liquid_level }}%"></div>
+				<div class="level"></div>
+			</div>
+			<div class="content">
+				<span id="levelValue">0%</span>
+			</div>
+			<script>
+				function updateLevel(level) {
+					var liquid = document.getElementById("liquid");
+					var levelIndicator = document.querySelector(".level");
+					
+					//var level = (level*100)
+					
+					liquid.style.height = level + "%";
+					levelIndicator.style.bottom = level + "%";
+					
+					document.getElementById("levelValue").innerHTML = level.toFixed(2) + "%";
+				}
+
+				// Fetch data from server
+				setInterval(function(click_id) {
+					fetch('/api/liquid-level')
+						.then(response => response.json())
+						.then(data => {
+							updateLevel(data.level);
+						})
+						.catch(error => {
+							console.error('Error fetching data:', error);
+						});
+				}, 2000); // Update every 5 seconds
+				
+			</script>		
+			<div class="content" id="price-table">
+				<table class="prices-el-table"> 
+					<caption>Tarifpriser</caption>
+					<thead>	
+						<tr>
+							<th width="100px" class="prices-el-table-head">Time interval</th>
+							<th width="100px" class="prices-el-table-head">Tarifpriser in øre/kWh</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="prices-el-table-column">00 - 06</td>
+							<td class="prices-el-table-column">13.76</td>
+						</tr>
+						<tr>
+							<td class="prices-el-table-column">06 - 17</td>
+							<td class="prices-el-table-column">20.65</td>
+						</tr>
+						<tr>
+							<td class="prices-el-table-column">17 - 21</td>
+							<td class="prices-el-table-column">53.68</td>
+						</tr>
+						<tr>
+							<td class="prices-el-table-column">21 - 00</td>
+							<td class="prices-el-table-column">20.65</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="bottom-bar">
+		<a href="{{ url_for('mainpage') }}" style="color: white; text-decoration:none;"> Øster Bjerregrav Vandværk </a>
+	</div>
+</body>
+</html>

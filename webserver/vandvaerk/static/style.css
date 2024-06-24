@@ -6,7 +6,7 @@ body {
 }
 
 .content-container {
-	flex: 1;
+	flex: 1;	
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -17,8 +17,18 @@ body {
 	margin-right: 80px;
 }
 
+.textbox {
+	text-align: left;
+	font-size: 16px;
+	border: 2px solid #101;
+	width: 300px;
+	height: 400px;
+	padding: 10px;
+	box-sizing: border-box;
+}
+
 .water-container {
-    width: 200px;
+    width: 220px;
     height: 300px;
     border: 2px solid #000;
     position: relative;
@@ -44,27 +54,29 @@ body {
 }
 
 .top-bar {
-        background-color: #333; /* Background color */
-        color: #fff; /* Text color */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px 20px;
-		margin-bottom: 20px;
+	background-color: #333; 
+	color: #fff; 
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+	font-size: 16px;
 }
 .logo {
-	width: 100px; /* Adjust the size of the logo as needed */
+	width: 100px; 
 }
-.login-button {
-	background-color: #f1c40f; /* Button background color */
-	color: #333; /* Button text color */
+.top-button {
+	background-color: #f1c40f; 
+	color: #333; 
 	padding: 8px 16px;
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
+	text-decoration: none;
 }
-.login-button:hover {
-	background-color: #ffd700; /* Hover background color */
+.top-button:hover {
+	background-color: #ffd700; 
 }
 .button {
     background-color: #27de0e;
@@ -95,16 +107,15 @@ body {
 	text-align: center;
 	border-style: solid;
 	border-color: #565656;
+	width: auto;
 }
 .prices-el-table-head {
 	background-color: #0012;
-	text-align: left;
 	border-style: double;
-	
 }
 .prices-el-table-column {
 	background-color: transparent;
-	text-align: left;
+	text-align: right;
 	border-style: ridge;
 }
 .prices-el-table-title {
@@ -127,7 +138,7 @@ body {
 	position: relative;
 	display: inline-block;
 	width: 80px;
-	height: 28px;
+	height: 20px;
 }
 .switch input {
 	opacity: 0;
@@ -149,7 +160,7 @@ body {
 .slider:before {
 	position: absolute;
 	content: "";
-	height: 20px;
+	height: 12px;
 	width: 20px;
 	left: 8px;
 	bottom: 4px;

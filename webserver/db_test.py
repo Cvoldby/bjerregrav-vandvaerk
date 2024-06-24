@@ -24,10 +24,10 @@ def dbconnect():
 
 
 cur = dbconnect()
-dato = ['2024-05-30']
+dato = ['2024-06-06']
 print(dato)
 print(list(dato))
-cur.execute("SELECT * FROM vandvaerk.elPriser WHERE dato='2024-05-30';")#, dato)
+cur.execute("SELECT * FROM vandvaerk.elPriser WHERE dato=?;", dato)# WHERE dato='2024-05-30
 prices = cur.fetchall()
 
 price_date, price_int = prices[0][0],[float(x) for x in list(prices[0][1:])]
